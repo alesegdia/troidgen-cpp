@@ -1,0 +1,3 @@
+[submodule "modules/troidgen"]
+	path = modules/troidgen
+	url = git@github.com:alesegdia/troidgen.git

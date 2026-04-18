@@ -6,7 +6,7 @@ namespace troidgen {
 struct OverlapSolverConfig {
     float separationParameter   = 1.0f;
     int   resolution            = 64;
-    bool  interactive           = false;
+    bool  interactive           = true;
     bool  enableRandomDisplacement   = true;
     bool  enableRandomPushIfZero     = true;
     bool  enableTweakNearSeparation  = true;

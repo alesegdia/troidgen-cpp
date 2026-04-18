@@ -1,0 +1,6 @@
+[requires]
+sdl/2.30.9
+
+[generators]
+CMakeDeps
+CMakeToolchain

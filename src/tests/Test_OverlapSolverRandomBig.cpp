@@ -1,5 +1,6 @@
 #include "troidgen/OverlapSolver.hpp"
 #include "troidgen/OverlapSolverConfig.hpp"
+#include "troidgen/renderer/RectDebugger.hpp"
 #include "troidgen/util/RNG.hpp"
 #include "troidgen/room/Room.hpp"
 #include <iostream>
@@ -31,7 +32,9 @@ int main() {
     osc.enclosingRect.position.x -= 100.0f;
     osc.enclosingRect.position.y -= 100.0f;
 
+    RectDebugger(rects, 800, 600).Show();
     rects = os.solve(osc, rects);
+    RectDebugger(rects, 800, 600).Show();
 
     std::cout << "Test_OverlapSolverRandomBig: solved " << rects.size() << " rooms\n";
     return 0;

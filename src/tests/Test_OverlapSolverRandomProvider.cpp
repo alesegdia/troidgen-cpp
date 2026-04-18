@@ -2,6 +2,7 @@
 #include "troidgen/OverlapSolver.hpp"
 #include "troidgen/OverlapSolverConfig.hpp"
 #include "troidgen/RandomRoomProvider.hpp"
+#include "troidgen/renderer/RectDebugger.hpp"
 #include "troidgen/util/RNG.hpp"
 #include "troidgen/util/MiscRoomUtils.hpp"
 #include "troidgen/room/Room.hpp"
@@ -23,7 +24,9 @@ int main() {
     osc.separationParameter = 1.0f;
     osc.enableTweakNearSeparation = false;
 
+    RectDebugger(rects, 800, 600).Show();
     rects = os.solve(osc, rects);
+    RectDebugger(rects, 800, 600).Show();
 
     GroupExtractor ge;
     auto groups = ge.solve(rects);
@@ -35,6 +38,8 @@ int main() {
         for (const auto& r : group) std::cout << "  " << r->toString() << "\n";
         std::cout << "========================\n";
     }
+
+    RectDebugger(*best, 800, 600).Show();
 
     std::cout << "Best group size: " << best->size() << "\n";
     return 0;

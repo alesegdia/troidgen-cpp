@@ -5,6 +5,7 @@
 #include "troidgen/MinSizeRoomGroupValidator.hpp"
 #include "troidgen/RandomRoomProvider.hpp"
 #include "troidgen/OverlapSolverConfig.hpp"
+#include "troidgen/renderer/RectDebugger.hpp"
 #include "troidgen/util/Rect.hpp"
 #include <iostream>
 #include <memory>
@@ -44,6 +45,9 @@ int main() {
 
     LinkBuilder linksb;
     linksb.generate(result);
+
+    RectDebugger rd(result, 800, 600, &osc.enclosingRect);
+    rd.Show();
 
     std::cout << "Test_LayoutBuilder done, rooms: " << result.size() << "\n";
     return 0;

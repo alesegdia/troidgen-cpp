@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+find_package(SDL2 REQUIRED)
+
 # -----------------------------------------------------------------------
 # Library sources
 # -----------------------------------------------------------------------
@@ -39,12 +41,17 @@ add_library(troidgen STATIC
     src/OverlapSolver.cpp
     src/RandomRoomProvider.cpp
     src/util/Util.cpp
+
+    # renderer
+    src/renderer/RectDebugger.cpp
 )
 
 target_include_directories(troidgen PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
+
+target_link_libraries(troidgen PUBLIC SDL2::SDL2)
 
 # -----------------------------------------------------------------------
 # Tests

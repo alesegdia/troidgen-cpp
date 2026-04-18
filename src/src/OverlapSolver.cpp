@@ -1,4 +1,5 @@
 #include "troidgen/OverlapSolver.hpp"
+#include "troidgen/renderer/RectDebugger.hpp"
 #include "troidgen/util/RNG.hpp"
 #include <algorithm>
 #include <cmath>
@@ -79,6 +80,10 @@ std::vector<std::shared_ptr<Room>> OverlapSolver::solve(
                     if (osc.earlyBreak) break;
                 }
             }
+        }
+
+        if (osc.interactive) {
+            RectDebugger(rects, 400, 400).Show();
         }
     }
 

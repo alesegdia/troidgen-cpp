@@ -2,6 +2,7 @@
 #include "troidgen/OverlapSolver.hpp"
 #include "troidgen/GroupExtractor.hpp"
 #include "troidgen/LinkBuilder.hpp"
+#include "troidgen/renderer/RectDebugger.hpp"
 #include "troidgen/util/RNG.hpp"
 #include "troidgen/util/Logger.hpp"
 #include "troidgen/util/MiscRoomUtils.hpp"
@@ -48,6 +49,11 @@ std::vector<std::shared_ptr<Room>> LayoutBuilder::generate(
         geometryProvider.notifySelected(outputLayout);
 
         Logger::Log(static_cast<int>(outputLayout.size()));
+
+        if (lbc.interactive) {
+            auto checkGroupDebug = substraction(outputLayout, fixedGroup);
+            RectDebugger(checkGroupDebug, 800, 600).Show();
+        }
 
         checkGroup = substraction(outputLayout, fixedGroup);
 
